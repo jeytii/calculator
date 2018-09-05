@@ -1,0 +1,11 @@
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	margin: 0;
+}
+
+button:not(.operator) {
+	@include background(darken(#21a1e1, 20%));
+}

@@ -1,0 +1,37 @@
+.calculator {
+	height: 100%;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-auto-rows: 1fr;
+
+	&__screen {
+		grid-column: 1 / -1;
+		padding: 0.1rem 2rem;
+		flex-direction: column;
+		background: #2f2f2f;
+		color: #4eb4e7;
+		position: relative;
+
+		&:after {
+			content: '';
+			position: absolute;
+			display: block;
+			width: 100%;
+			height: 2px;
+			left: 0;
+			bottom: 0;
+			background: #2f2f2f;
+			box-sizing: border-box;
+		}
+	}
+
+	&__button {
+		border: none;
+		cursor: pointer;
+		outline: 1px solid rgba(255, 255, 255, 0.35);
+
+		&:nth-child(18) {
+			grid-column: 1 / span 2;
+		}
+	}
+}

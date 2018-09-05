@@ -1,0 +1,8 @@
+@mixin background($bg) {
+	background: $bg;
+	color: lighten($bg, 50%);
+
+	&:hover {
+		background: darken($bg, 5%);
+	}
+}

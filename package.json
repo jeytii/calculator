@@ -1,0 +1,40 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "Standard calculator built with vanilla Javascript",
+  "main": "index.js",
+  "scripts": {
+    "htmlmin": "htmlmin -o build/index.html src/index.html",
+    "scss:dev": "node-sass --output-style expanded src/styles/main.scss -o src",
+    "scss:prod": "node-sass --output-style compressed src/styles/main.scss -o build",
+    "js:dev": "webpack src/scripts/main.js -o src/bundle.js --module-bind js=babel-loader --mode=development",
+    "js:prod": "webpack src/scripts/main.js -o build/bundle.js --module-bind js=babel-loader --mode=production",
+    "imagemin": "imagemin src/favicon.ico --out-dir=build",
+    "delete": "del-cli src/main.css src/bundle.js build",
+    "serve": "live-server --port=9000 --host=localhost",
+    "start": "npm run delete && parallelshell \"npm run scss:dev -- -w\" \"npm run js:dev -- -w\" \"npm run serve\"",
+    "build": "npm run delete && parallelshell \"npm run scss:prod\" \"npm run js:prod\" && parallelshell \"npm run htmlmin\" \"npm run imagemin\"",
+    "build:serve": "npm run build && npm run serve",
+    "deploy": "gh-pages -d build"
+  },
+  "keywords": [
+    "calculator",
+    "javascript"
+  ],
+  "author": "Jonathan Tarnate",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-loader": "^8.0.0",
+    "del-cli": "^1.1.0",
+    "gh-pages": "^1.2.0",
+    "htmlmin": "0.0.7",
+    "imagemin-cli": "^3.0.0",
+    "live-server": "^1.2.0",
+    "node-sass": "^4.9.3",
+    "parallelshell": "^3.0.2",
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0"
+  }
+}
